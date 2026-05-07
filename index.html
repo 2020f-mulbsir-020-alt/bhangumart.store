@@ -1,0 +1,1632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BhanguMart - Your Everyday Smart Marketplace</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ========== RESET & BASE STYLES ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #0F172A;
+            background-color: #FFFFFF;
+            line-height: 1.6;
+        }
+
+        /* ========== COLOR PALETTE ========== */
+        :root {
+            --primary-orange: #FF6A00;
+            --primary-navy: #0F172A;
+            --white: #FFFFFF;
+            --light-gray: #F3F4F6;
+            --accent-green: #22C55E;
+            --accent-red: #EF4444;
+            --text-primary: #0F172A;
+            --text-secondary: #6B7280;
+            --border-light: #E5E7EB;
+        }
+
+        /* ========== TYPOGRAPHY ========== */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            line-height: 1.3;
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* ========== HEADER / NAVIGATION ========== */
+        header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border-light);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-orange);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: "🛍️";
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-orange);
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .icon-btn {
+            background: none;
+            border: none;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .icon-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* ========== HERO SECTION ========== */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-navy) 0%, #1a2640 100%);
+            color: var(--white);
+            padding: 5rem 2rem;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero::before {
+            content: "📦 🎁 💳 🚀 ⭐ 🛒";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            font-size: 8rem;
+            opacity: 0.08;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            color: var(--white);
+            margin-bottom: 1rem;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .hero .subtitle {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .search-bar-wrapper {
+            display: flex;
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .search-bar {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .search-bar::placeholder {
+            color: #9CA3AF;
+        }
+
+        .search-btn {
+            padding: 1rem 2rem;
+            background: var(--primary-orange);
+            color: var(--white);
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        .search-btn:hover {
+            background: #E55A00;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-primary {
+            background: var(--primary-orange);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: #E55A00;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 106, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--primary-navy);
+            transform: translateY(-2px);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ========== CATEGORY SECTION ========== */
+        .categories {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .categories h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .category-card {
+            background: var(--light-gray);
+            padding: 2rem 1.5rem;
+            border-radius: 0.75rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .category-card:hover {
+            background: var(--white);
+            border-color: var(--primary-orange);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .category-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .category-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+
+        /* ========== FEATURED PRODUCTS SECTION ========== */
+        .featured {
+            background: var(--light-gray);
+            padding: 4rem 2rem;
+        }
+
+        .featured-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .featured h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 0.75rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-image {
+            background: linear-gradient(135deg, #E5E7EB 0%, #F3F4F6 100%);
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card:hover .product-image {
+            background: linear-gradient(135deg, #0F172A 0%, #1a2640 100%);
+        }
+
+        .badge {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            background: var(--accent-red);
+            color: var(--white);
+            padding: 0.35rem 0.75rem;
+            border-radius: 0.35rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .badge.sale {
+            background: var(--accent-red);
+        }
+
+        .badge.bestseller {
+            background: var(--primary-orange);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-name {
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .product-rating {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .rating-star {
+            color: #FCD34D;
+            margin-right: 0.25rem;
+        }
+
+        .product-price {
+            display: flex;
+            gap: 0.5rem;
+            align-items: baseline;
+            margin-bottom: 1rem;
+        }
+
+        .current-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-orange);
+        }
+
+        .original-price {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-decoration: line-through;
+        }
+
+        .discount-percent {
+            font-size: 0.8rem;
+            color: var(--accent-green);
+            font-weight: 600;
+        }
+
+        .add-to-cart-btn {
+            background: var(--primary-orange);
+            color: var(--white);
+            border: none;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: auto;
+        }
+
+        .add-to-cart-btn:hover {
+            background: #E55A00;
+            transform: scale(1.02);
+        }
+
+        /* ========== DEALS & DISCOUNTS SECTION ========== */
+        .deals {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .deals h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .deals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .deal-card {
+            background: linear-gradient(135deg, var(--primary-orange) 0%, #FF8533 100%);
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .deal-card::before {
+            content: "⚡";
+            position: absolute;
+            font-size: 6rem;
+            opacity: 0.15;
+            top: -1rem;
+            right: -1rem;
+        }
+
+        .deal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(255, 106, 0, 0.3);
+        }
+
+        .deal-tag {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .deal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .deal-desc {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1.5rem;
+        }
+
+        .deal-discount {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .deal-cta {
+            background: var(--primary-navy);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.35rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .deal-cta:hover {
+            background: var(--text-primary);
+        }
+
+        /* ========== WHY SHOP WITH US ========== */
+        .why-us {
+            background: var(--light-gray);
+            padding: 4rem 2rem;
+        }
+
+        .why-us-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .why-us h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .benefit-card {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            background: var(--white);
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .benefit-card p {
+            font-size: 0.9rem;
+        }
+
+        /* ========== TRENDING PRODUCTS ========== */
+        .trending {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .trending h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        /* ========== TESTIMONIALS ========== */
+        .testimonials {
+            background: var(--primary-navy);
+            color: var(--white);
+            padding: 4rem 2rem;
+        }
+
+        .testimonials-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .testimonials h2 {
+            color: var(--white);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .testimonial-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-5px);
+        }
+
+        .stars {
+            color: #FCD34D;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .testimonial-author {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary-orange);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .author-info h4 {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .author-info p {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0;
+        }
+
+        /* ========== APP SECTION ========== */
+        .app-section {
+            background: linear-gradient(135deg, var(--light-gray) 0%, var(--white) 100%);
+            padding: 4rem 2rem;
+        }
+
+        .app-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .app-text h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        .app-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .app-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .app-features li {
+            padding: 0.75rem 0;
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
+        .app-features li::before {
+            content: "✓";
+            color: var(--accent-green);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .app-mock {
+            display: flex;
+            justify-content: center;
+        }
+
+        .phone-mockup {
+            width: 250px;
+            height: 500px;
+            background: linear-gradient(to right, var(--primary-navy), #1a2640);
+            border-radius: 2rem;
+            padding: 1rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .phone-mockup::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 25px;
+            background: var(--primary-navy);
+            border-radius: 0 0 1.5rem 1.5rem;
+            z-index: 10;
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: var(--primary-orange);
+            border-radius: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 1rem;
+            gap: 1rem;
+            font-size: 2rem;
+        }
+
+        /* ========== CTA SECTION ========== */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-orange) 0%, #FF8533 100%);
+            color: var(--white);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn.primary {
+            background: var(--primary-navy);
+            color: var(--white);
+        }
+
+        .cta-btn.primary:hover {
+            background: var(--text-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-btn.secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .cta-btn.secondary:hover {
+            background: var(--white);
+            color: var(--primary-orange);
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background: var(--primary-navy);
+            color: var(--white);
+            padding: 3rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-orange);
+        }
+
+        .footer-logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-orange);
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-tagline {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icon {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background: var(--primary-orange);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* ========== RESPONSIVE DESIGN ========== */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.75rem;
+            }
+
+            nav {
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+
+            .hero {
+                padding: 3rem 1rem;
+            }
+
+            .search-bar-wrapper {
+                flex-direction: column;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .category-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .deals-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .app-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .phone-mockup {
+                width: 200px;
+                height: 400px;
+            }
+
+            .cta-buttons-group {
+                flex-direction: column;
+            }
+
+            .cta-btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.35rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 1.25rem;
+            }
+
+            .hero .subtitle {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== HEADER ========== -->
+    <header>
+        <nav>
+            <a href="#" class="logo">BhanguMart</a>
+            <ul class="nav-links">
+                <li><a href="#categories">Categories</a></li>
+                <li><a href="#deals">Deals</a></li>
+                <li><a href="#trending">Trending</a></li>
+                <li><a href="#about">About Us</a></li>
+            </ul>
+            <div class="nav-icons">
+                <button class="icon-btn">❤️</button>
+                <button class="icon-btn">🔔</button>
+                <button class="icon-btn">👤</button>
+                <button class="icon-btn">🛒</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ========== HERO SECTION ========== -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Shop Everything You Love, All in One Place.</h1>
+            <p class="subtitle">Discover electronics, fashion, home essentials, and daily needs—fast, affordable, and reliable.</p>
+            
+            <div class="search-bar-wrapper">
+                <input type="text" class="search-bar" placeholder="Search for products, categories, or brands...">
+                <button class="search-btn">🔍 Search</button>
+            </div>
+
+            <div class="cta-buttons">
+                <button class="btn btn-primary">Start Shopping</button>
+                <button class="btn btn-secondary">Browse Deals</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CATEGORY SECTION ========== -->
+    <section class="categories" id="categories">
+        <h2>Shop by Category</h2>
+        <div class="category-grid">
+            <div class="category-card">
+                <div class="category-icon">📱</div>
+                <div class="category-name">Electronics</div>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">👗</div>
+                <div class="category-name">Fashion</div>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">🏠</div>
+                <div class="category-name">Home & Kitchen</div>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">💄</div>
+                <div class="category-name">Beauty & Care</div>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">🛒</div>
+                <div class="category-name">Grocery</div>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">⚽</div>
+                <div class="category-name">Sports</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FEATURED PRODUCTS SECTION ========== -->
+    <section class="featured">
+        <div class="featured-content">
+            <h2>Featured Products</h2>
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        📱
+                        <div class="badge bestseller">Best Seller</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Wireless Earbuds Pro</div>
+                        <div class="product-rating">
+                            <span class="rating-star">★ ★ ★ ★ ★</span>
+                            <span>(324 reviews)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">₹2,999</span>
+                            <span class="original-price">₹5,999</span>
+                            <span class="discount-percent">-50%</span>
+                        </div>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        ⌚
+                        <div class="badge sale">Sale</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Smart Watch Ultra</div>
+                        <div class="product-rating">
+                            <span class="rating-star">★ ★ ★ ★ ☆</span>
+                            <span>(218 reviews)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">₹8,499</span>
+                            <span class="original-price">₹12,999</span>
+                            <span class="discount-percent">-35%</span>
+                        </div>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        💻
+                        <div class="badge bestseller">Best Seller</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">USB-C Fast Charger</div>
+                        <div class="product-rating">
+                            <span class="rating-star">★ ★ ★ ★ ★</span>
+                            <span>(467 reviews)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">₹599</span>
+                            <span class="original-price">₹1,299</span>
+                            <span class="discount-percent">-54%</span>
+                        </div>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        🎧
+                        <div class="badge sale">Sale</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Bluetooth Speaker Max</div>
+                        <div class="product-rating">
+                            <span class="rating-star">★ ★ ★ ★ ★</span>
+                            <span>(543 reviews)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">₹3,499</span>
+                            <span class="original-price">₹6,499</span>
+                            <span class="discount-percent">-46%</span>
+                        </div>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        🎮
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Wireless Gaming Mouse</div>
+                        <div class="product-rating">
+                            <span class="rating-star">★ ★ ★ ★ ☆</span>
+                            <span>(289 reviews)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">₹1,899</span>
+                            <span class="original-price">₹3,499</span>
+                            <span class="discount-percent">-46%</span>
+                        </div>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        📷
+                        <div class="badge bestseller">Best Seller</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">HD Webcam Pro</div>
+                        <div class="product-rating">
+                            <span class="rating-star">★ ★ ★ ★ ★</span>
+                            <span>(406 reviews)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">₹2,299</span>
+                            <span class="original-price">₹4,499</span>
+                            <span class="discount-percent">-49%</span>
+                        </div>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== DEALS & DISCOUNTS SECTION ========== -->
+    <section class="deals" id="deals">
+        <h2>Exclusive Deals for You</h2>
+        <div class="deals-grid">
+            <div class="deal-card">
+                <div class="deal-tag">⚡ Flash Sale</div>
+                <div class="deal-title">Electronics Bonanza</div>
+                <div class="deal-desc">Limited time offers on all electronic gadgets</div>
+                <div class="deal-discount">Up to 60%</div>
+                <p style="font-size: 0.85rem; color: rgba(255, 255, 255, 0.85); margin-bottom: 1.5rem;">Ends in 5 hours</p>
+                <button class="deal-cta">Shop Now</button>
+            </div>
+
+            <div class="deal-card">
+                <div class="deal-tag">🎁 Special Offer</div>
+                <div class="deal-title">Fashion Week</div>
+                <div class="deal-desc">Stylish clothing & accessories at unbeatable prices</div>
+                <div class="deal-discount">50% OFF</div>
+                <p style="font-size: 0.85rem; color: rgba(255, 255, 255, 0.85); margin-bottom: 1.5rem;">Ends in 2 days</p>
+                <button class="deal-cta">Shop Now</button>
+            </div>
+
+            <div class="deal-card">
+                <div class="deal-tag">🏠 Home Deals</div>
+                <div class="deal-title">Kitchen Essentials</div>
+                <div class="deal-desc">Complete your home with our curated collection</div>
+                <div class="deal-discount">Up to 45%</div>
+                <p style="font-size: 0.85rem; color: rgba(255, 255, 255, 0.85); margin-bottom: 1.5rem;">Ends in 3 days</p>
+                <button class="deal-cta">Shop Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== WHY SHOP WITH US ========== -->
+    <section class="why-us" id="about">
+        <div class="why-us-content">
+            <h2>Why Shop With BhanguMart?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🚀</div>
+                    <h3>Lightning Fast Delivery</h3>
+                    <p>Get your orders delivered within 24-48 hours across the region. We value your time.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">💰</div>
+                    <h3>Best Prices Guaranteed</h3>
+                    <p>We offer the lowest prices without compromising on quality. Price match guaranteed.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">🔒</div>
+                    <h3>Secure Payments</h3>
+                    <p>100% secure transactions with encrypted payment gateway and buyer protection.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">↩️</div>
+                    <h3>Easy Returns</h3>
+                    <p>Hassle-free returns and exchanges within 30 days. No questions asked policy.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">⭐</div>
+                    <h3>Trusted by Millions</h3>
+                    <p>Join 5M+ happy customers who trust BhanguMart for their daily shopping.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">📞</div>
+                    <h3>24/7 Customer Support</h3>
+                    <p>Our dedicated support team is always ready to help you, anytime, anywhere.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== TRENDING PRODUCTS ========== -->
+    <section class="trending" id="trending">
+        <h2>Trending Right Now</h2>
+        <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <div class="product-image">
+                    👕
+                    <div class="badge sale">Sale</div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Premium T-Shirt</div>
+                    <div class="product-rating">
+                        <span class="rating-star">★ ★ ★ ★ ★</span>
+                        <span>(612 reviews)</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="current-price">₹399</span>
+                        <span class="original-price">₹999</span>
+                        <span class="discount-percent">-60%</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <div class="product-image">
+                    👟
+                    <div class="badge bestseller">Best Seller</div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Running Shoes Elite</div>
+                    <div class="product-rating">
+                        <span class="rating-star">★ ★ ★ ★ ★</span>
+                        <span>(834 reviews)</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="current-price">₹2,999</span>
+                        <span class="original-price">₹5,999</span>
+                        <span class="discount-percent">-50%</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <div class="product-image">
+                    🎒
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Travel Backpack</div>
+                    <div class="product-rating">
+                        <span class="rating-star">★ ★ ★ ★ ☆</span>
+                        <span>(456 reviews)</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="current-price">₹1,599</span>
+                        <span class="original-price">₹3,199</span>
+                        <span class="discount-percent">-50%</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card">
+                <div class="product-image">
+                    ⌛
+                    <div class="badge sale">Sale</div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Analog Watch Classic</div>
+                    <div class="product-rating">
+                        <span class="rating-star">★ ★ ★ ★ ★</span>
+                        <span>(723 reviews)</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="current-price">₹1,299</span>
+                        <span class="original-price">₹2,999</span>
+                        <span class="discount-percent">-57%</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product-card">
+                <div class="product-image">
+                    🎧
+                    <div class="badge bestseller">Best Seller</div>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Noise Cancelling Headphones</div>
+                    <div class="product-rating">
+                        <span class="rating-star">★ ★ ★ ★ ★</span>
+                        <span>(591 reviews)</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="current-price">₹5,999</span>
+                        <span class="original-price">₹11,999</span>
+                        <span class="discount-percent">-50%</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="product-card">
+                <div class="product-image">
+                    💍
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Jewelry Collection</div>
+                    <div class="product-rating">
+                        <span class="rating-star">★ ★ ★ ★ ☆</span>
+                        <span>(378 reviews)</span>
+                    </div>
+                    <div class="product-price">
+                        <span class="current-price">₹3,299</span>
+                        <span class="original-price">₹6,999</span>
+                        <span class="discount-percent">-53%</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== TESTIMONIALS ========== -->
+    <section class="testimonials">
+        <div class="testimonials-content">
+            <h2>What Our Customers Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">★ ★ ★ ★ ★</div>
+                    <div class="testimonial-text">"BhanguMart is my go-to marketplace! Fast delivery, great prices, and excellent customer service. Highly recommended!"</div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">RK</div>
+                        <div class="author-info">
+                            <h4>Ravi Kumar</h4>
+                            <p>Verified Buyer</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★ ★ ★ ★ ★</div>
+                    <div class="testimonial-text">"Amazing experience! The product quality is fantastic and the return process was super smooth. Will definitely shop again."</div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">PS</div>
+                        <div class="author-info">
+                            <h4>Priya Singh</h4>
+                            <p>Verified Buyer</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★ ★ ★ ★ ★</div>
+                    <div class="testimonial-text">"Everything is perfect! Great deals, easy to navigate, and the app is super fast. BhanguMart made shopping so convenient!"</div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MJ</div>
+                        <div class="author-info">
+                            <h4>Mohan Joshi</h4>
+                            <p>Verified Buyer</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★ ★ ★ ★ ★</div>
+                    <div class="testimonial-text">"Love shopping on BhanguMart! The discounts are incredible and delivery is lightning fast. Best online marketplace ever!"</div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AN</div>
+                        <div class="author-info">
+                            <h4>Ananya Nair</h4>
+                            <p>Verified Buyer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== APP SECTION ========== -->
+    <section class="app-section">
+        <div class="app-content">
+            <div class="app-text">
+                <h2>Shop Smarter on Mobile</h2>
+                <p>Download the BhanguMart app for exclusive deals, faster checkout, and personalized recommendations. Get ₹200 off on your first purchase!</p>
+                
+                <ul class="app-features">
+                    <li>Exclusive app-only discounts & flash sales</li>
+                    <li>One-tap checkout & saved payment methods</li>
+                    <li>Real-time order tracking</li>
+                    <li>Personalized product recommendations</li>
+                    <li>Offline browsing capability</li>
+                    <li>Push notifications for best deals</li>
+                </ul>
+
+                <div class="cta-buttons">
+                    <button class="btn btn-primary">Download on iOS</button>
+                    <button class="btn btn-secondary" style="color: var(--text-primary); border-color: var(--text-primary);">Download on Android</button>
+                </div>
+            </div>
+
+            <div class="app-mock">
+                <div class="phone-mockup">
+                    <div class="phone-screen">
+                        📱
+                        <p style="font-size: 1rem; margin-top: 1rem;">BhanguMart<br>Mobile App</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CTA SECTION ========== -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Start Shopping Smarter Today</h2>
+            <p>Join millions of happy customers and discover the best deals on everything you love.</p>
+            <div class="cta-buttons-group">
+                <button class="cta-btn primary">Explore Store</button>
+                <button class="cta-btn secondary">View Offers</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">BhanguMart</div>
+                <p class="footer-tagline">"Everything You Need, In One Smart Mart."</p>
+                <div class="social-icons">
+                    <div class="social-icon">f</div>
+                    <div class="social-icon">𝕏</div>
+                    <div class="social-icon">📷</div>
+                    <div class="social-icon">▶</div>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="#">Electronics</a></li>
+                    <li><a href="#">Fashion</a></li>
+                    <li><a href="#">Home & Kitchen</a></li>
+                    <li><a href="#">Beauty</a></li>
+                    <li><a href="#">Grocery</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>About Us</h4>
+                <ul>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Sustainability</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Shipping Info</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">Track Order</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Cookie Settings</a></li>
+                    <li><a href="#">Disclaimer</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 BhanguMart. All rights reserved. Your Everyday Smart Marketplace.</p>
+            <p>Made with ❤️ for smart shoppers like you.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
